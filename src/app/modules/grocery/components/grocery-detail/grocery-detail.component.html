@@ -1,0 +1,19 @@
+<div *ngIf="grocery$ | async as groceryItem" class="grocery-wrapper">
+  <div class="text-content">
+    <h1>{{ groceryItem.name }}</h1>
+  </div>
+
+  <div class="text-content">{{ groceryItem.description }}</div>
+
+  <div class="text-content">{{ groceryItem.additionalInformation }}</div>
+
+  <div class="grocery-image-wrapper">
+    <img
+      *ngFor="let groceryImg of groceryItem.images"
+      class="grocery-image"
+      [src]="groceryImg"
+    />
+  </div>
+
+  <button [routerLink]="['/grocery']" class="back-button">Back</button>
+</div>

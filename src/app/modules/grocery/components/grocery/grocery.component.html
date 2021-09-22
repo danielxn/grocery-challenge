@@ -1,0 +1,23 @@
+<div class="header">
+  <input
+    type="text"
+    (input)="changedFilterValue($event)"
+    placeholder="Search expression..."
+    [(ngModel)]="filterExpression"
+  />
+</div>
+
+<ul>
+  <li
+    *ngFor="let grocery of groceries$ | async | filterPipe: filterExpression"
+    class="grocery-item"
+  >
+    <span>{{ grocery.name }}</span>
+    <button
+      [routerLink]="['detail', grocery.name]"
+      class="view-detail-button"
+    >
+      View Details
+    </button>
+  </li>
+</ul>
